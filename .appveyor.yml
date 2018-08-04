@@ -13,13 +13,13 @@ configuration:
 - Debug
 
 platform:
-- x86
-- x86_64
+- Win32
+- x64
 
 before_build:
 - md build
 - cd build
-- cmake -Wno-dev --config "%CONFIGURATION%" -G "%GENERATOR%" ..
+- cmake -Wno-dev -A%PLATFORM% ..
 
 build_script:
 - cmake --build . --config "%CONFIGURATION%"

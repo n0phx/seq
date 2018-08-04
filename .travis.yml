@@ -1,0 +1,67 @@
+sudo: required
+os: linux
+dist: trusty
+language: cpp
+
+branches:
+  only:
+    - master
+    - develop
+
+matrix:
+  include:
+    - compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-7']
+      env:
+        - CXX=g++-7
+        - CXXSTD=-std=c++17
+
+    - compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-8']
+      env:
+        - CXX=g++-8
+        - CXXSTD=-std=c++17
+
+    - compiler: clang
+      addons:
+        apt:
+          sources: ['llvm-toolchain-trusty-5.0']
+          packages: ['clang-5.0']
+      env:
+        - CXX=clang++-5.0
+        - CXXSTD=-std=c++17
+
+    - compiler: clang
+      addons:
+        apt:
+          sources: ['llvm-toolchain-trusty-6.0']
+          packages: ['clang-6.0']
+      env:
+        - CXX=clang++-6.0
+        - CXXSTD=-std=c++17
+
+    - os: osx
+      osx_image: xcode9.4
+      compiler: clang
+      env:
+        - CXX=clang++
+        - CXXSTD=-std=c++17
+
+before_install:
+  - wget -O cmake.sh https://cmake.org/files/v3.10/cmake-3.10.0-Linux-x86_64.sh
+  - sudo sh cmake.sh --skip-license --exclude-subdir --prefix=/usr/local
+
+before_script:
+  - cd "${TRAVIS_BUILD_DIR}"
+  - mkdir build && cd build
+  - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+
+script:
+  - cmake --build . -- -j${JOBS}
+  - ctest --output-on-failure -j${JOBS}

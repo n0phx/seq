@@ -1,7 +1,7 @@
 # seq
 
-[![TravisCI](https://travis-ci.org/integricho/seq.svg?branch=develop)](https://travis-ci.org/integricho/seq)
-[![AppVeyor](https://ci.appveyor.com/api/projects/status/rfg2wy7iwow91hp3/branch/develop?svg=true)](https://ci.appveyor.com/project/integricho/seq/branch/develop)
+[![TravisCI](https://travis-ci.org/integricho/seq.svg?branch=master)](https://travis-ci.org/integricho/seq)
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/rfg2wy7iwow91hp3/branch/master?svg=true)](https://ci.appveyor.com/project/integricho/seq/branch/master)
 
 Compile-time integer sequence manipulation, header-only library for C++17.
 

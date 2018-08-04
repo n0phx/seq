@@ -1,5 +1,8 @@
 # seq
 
+[![TravisCI](https://travis-ci.org/integricho/seq.svg?branch=develop)](https://travis-ci.org/integricho/seq)
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/rfg2wy7iwow91hp3/branch/develop?svg=true)](https://ci.appveyor.com/project/integricho/seq/branch/develop)
+
 Compile-time integer sequence manipulation, header-only library for C++17.
 
 The reason for not supporting a lower standard is that some of the utilized features cannot be backported to older compilers without sacrifing API convenience.

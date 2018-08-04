@@ -1,0 +1,28 @@
+version: '{branch}-{build}'
+
+branches:
+  only:
+    - master
+    - develop
+
+image:
+- Visual Studio 2017
+
+configuration:
+- Release
+- Debug
+
+platform:
+- x86
+- x86_64
+
+before_build:
+- md build
+- cd build
+- cmake -Wno-dev --config "%CONFIGURATION%" -G "%GENERATOR%" ..
+
+build_script:
+- cmake --build . --config "%CONFIGURATION%"
+
+test_script:
+- ctest -C "%CONFIGURATION%" --output-on-failure

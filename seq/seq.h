@@ -1,6 +1,7 @@
 #pragma once
 
 #include <type_traits>
+#include <utility>
 
 namespace seq
 {
@@ -22,16 +23,19 @@ namespace impl
 /**
  * Sequence generator
  */
-template <typename T, std::size_t Size, T Start, std::make_signed_t<T> Step, T... Is>
-struct make
-    : make<T, (Size - 1), Start, Step, (Start + static_cast<T>(Size) * Step) - Step, Is...>
+template <typename T, T Start, std::make_signed_t<T> Step, typename Indices>
+struct generate;
+
+template <typename T, T Start, std::make_signed_t<T> Step, T... Index>
+struct generate<T, Start, Step, std::integer_sequence<T, Index...>>
 {
+    using type = iseq<T, (Start + Index * Step)...>;
 };
 
-template <typename T, T S, std::make_signed_t<T> I, T... Is>
-struct make<T, 0, S, I, Is...>
+template <typename T, std::size_t Size, T Start, std::make_signed_t<T> Step>
+struct make
 {
-    using type = iseq<T, Is...>;
+    using type = typename generate<T, Start, Step, std::make_integer_sequence<T, Size>>::type;
 };
 
 /**

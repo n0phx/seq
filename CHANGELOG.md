@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## 0.2 - 2021-01-25
+## 0.2.0 - 2021-01-25
 ### Changed
 - sequence size is now retrievable through size() static function instead of size enum
 - map, filter and reduce now also pass the index of the element being processed

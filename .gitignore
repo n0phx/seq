@@ -32,7 +32,10 @@
 *.app
 
 # Local build
-build*
+/build*
 
 # Visual Studio
 /.vs
+
+# VSCode
+/.vscode

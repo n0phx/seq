@@ -5,7 +5,7 @@
 
 Compile-time integer sequence manipulation, header-only library for C++17.
 
-The reason for not supporting a lower standard is that some of the utilized features cannot be backported to older compilers without sacrifing API convenience.
+The reason for not supporting a lower standard is that some of the utilized features cannot be backported to older compilers without sacrificing API convenience.
 
 Tested with Clang 6.0, GCC 8.1 and MSVC 19.14.26431.0
 
@@ -220,7 +220,7 @@ seq::append<8, seq_b>
 ##### Generate a sequence by applying the specified function to each element of the given sequence
 
 ```cpp
-constexpr int squared(int x)
+constexpr int squared(int x, std::size_t index)
 {
     return x * x;
 }
@@ -231,7 +231,7 @@ seq::map<squared, seq_b> //=> seq::iseq<int, 16, 25, 36, 49>
 ##### Copy sequence by keeping only those elements for which the given function returns true
 
 ```cpp
-constexpr bool even(int x)
+constexpr bool even(int x, std::size_t index)
 {
     return x % 2;
 }
@@ -243,7 +243,7 @@ seq::filter<even, seq_b>
 ##### Reduce a sequence to a single value
 
 ```cpp
-constexpr int sum_squares(int acc, int x)
+constexpr int sum_squares(int acc, int x, std::size_t index)
 {
     return acc + x * x;
 }

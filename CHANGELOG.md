@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 0.2.1 - 2021-02-11
+### Changed
+- silence MSVC-specific warnings only when compiling with MSVC
+- fix pedantic warnings reported by GCC
+- rework CMake setup
+
 ## 0.2.0 - 2021-01-25
 ### Changed
 - sequence size is now retrievable through size() static function instead of size enum

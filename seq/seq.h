@@ -125,7 +125,7 @@ constexpr T at(const iseq<T, Elements...>& /*unused*/, std::size_t index)
 {
     constexpr T values[] = {Elements...};
     return values[index];
-};
+}
 
 /**
  * Add the given element to the beginning of the sequence
@@ -254,7 +254,7 @@ template <typename T, std::size_t Count, T Value>
 struct repeat
 {
     template <std::size_t... Index>
-    using repeat_ = iseq<T, (Index, Value)...>;
+    using repeat_ = iseq<T, (static_cast<void>(Index), Value)...>;
     using type = expand<Count, repeat_>;
 };
 

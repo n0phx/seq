@@ -1,12 +1,16 @@
 #pragma once
 
+#ifdef _MSC_VER
 #pragma warning(push)
 #pragma warning(disable : 4365 5026 5027)
+#endif
 #include <array>
 #include <tuple>
 #include <type_traits>
 #include <utility>
+#ifdef _MSC_VER
 #pragma warning(pop)
+#endif
 
 namespace seq
 {
